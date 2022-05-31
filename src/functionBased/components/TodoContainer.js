@@ -56,7 +56,7 @@ const TodoContainer = () => {
     if (loadedTodos) {
       setTodos(loadedTodos)
     }
-  }, [setTodos])
+  }, [])
 
   useEffect(() => {
     const temp = JSON.stringify(todos)
