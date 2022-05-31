@@ -1,18 +1,32 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
-const TodoList = (props) => (
+const TodoList = ({
+  todos, handleChangeProps, delTodoProps, setUpdate,
+}) => (
   <ul>
-    {props.todos.map((todo) => (
+    {todos.map((todo) => (
       <TodoItem
         key={todo.id}
         todo={todo}
-        handleChangeProps={props.handleChangeProps}
-        delTodoProps={props.delTodoProps}
-        setUpdate={props.setUpdate}
+        handleChangeProps={handleChangeProps}
+        delTodoProps={delTodoProps}
+        setUpdate={setUpdate}
       />
     ))}
   </ul>
 );
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    completed: PropTypes.bool,
+    id: PropTypes.string,
+    title: PropTypes.string,
+  })).isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  delTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
 
 export default TodoList;

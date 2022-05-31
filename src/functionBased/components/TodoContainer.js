@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import TodoList from './TodoList';
 import Header from './Header';
 import InputTodo from './InputTodo';
-
+// import { Route, Switch } from "react-router-dom"
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -38,6 +38,7 @@ const TodoContainer = () => {
     setTodos(
       todos.map((todo) => {
         if (todo.id === id) {
+          // eslint-disable-next-line no-param-reassign
           todo.title = updatedTitle;
         }
         return todo;
@@ -46,8 +47,6 @@ const TodoContainer = () => {
   };
 
   useEffect(() => {
-    console.log('test run');
-
     const temp = localStorage.getItem('todos');
     const loadedTodos = JSON.parse(temp);
     if (loadedTodos) {
